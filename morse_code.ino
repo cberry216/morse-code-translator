@@ -1,3 +1,10 @@
+/*
+ * morse_code.ino
+ *  This program reads in input from a button and converts what is entered
+ * (which will be in morse code), and translates it into English. When the
+ * button is pressed, a buzzer will go off, simulating morse code beeps.
+ */
+
 char letter[4];
 int pos = 0;
 

@@ -1,3 +1,10 @@
+/*
+ * bin_count.ino
+ *  This program uses LEDs to represent bits of a 4-bit integer. When a button
+ * is pressed, the number is incremented (rounding back to 0 after 15) and the
+ * LEDs are updated accordingly.
+ */
+
 int first_led_pin = 8;
 int second_led_pin = 6;
 int third_led_pin = 4;
@@ -11,17 +18,28 @@ int count = 0;
 void setup() {
     Serial.begin(9600);
 
-    pinMode(2, OUTPUT);
-    pinMode(4, OUTPUT);
-    pinMode(6, OUTPUT);
-    pinMode(8, OUTPUT);
-    pinMode(10, INPUT);
+    pinMode(first_led_pin, OUTPUT);
+    pinMode(second_led_pin, OUTPUT);
+    pinMode(third_led_pin, OUTPUT);
+    pinMode(fourth_led_pin, OUTPUT);
+    pinMode(button_pin, INPUT);
 }
 
 void loop() {
     int state;
-    while((state = digitalRead(button_pin)) == LOW) {}      // Do nothing while button is not pressed
-    while((state = digitalRead(button_pin)) == HIGH) {}     // Wait till button is pressed and released
+    state = digitalRead(button_pin);
+    Serial.println(state);
+    while(state == LOW) {
+        state = digitalRead(button_pin);
+        Serial.println(state);
+        delay(1);
+    }      // Do nothing while button is not pressed
+    while(state == HIGH) {
+        state = digitalRead(button_pin);
+        Serial.println(state);
+        delay(1);
+    }     // Wait till button is pressed and released
+    Serial.println("Button pressed");
     count = ++count % 16;
     Serial.println(count);
 
