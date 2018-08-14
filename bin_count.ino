@@ -2,7 +2,7 @@
  * bin_count.ino
  *  This program uses LEDs to represent bits of a 4-bit integer. When a button
  * is pressed, the number is incremented (rounding back to 0 after 15) and the
- * LEDs are updated accordingly.
+ * LEDs are updated accordingly.  
  */
 
 int first_led_pin = 8;
